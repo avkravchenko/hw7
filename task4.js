@@ -20,14 +20,18 @@
 
 //Родительская функция
 // Функция конструктор для устройств
-function Device(type, name, model, year){
+function Device(year){
     this.company = 'apple',
+    this.year = year
+}
+
+// Функция конструктор для компьютеров
+function Computer(type, name, model, year){
     this.type = type,
     this.name = name,
     this.model = model,
     this.year = year
 }
-
 
 // Функция конструктор для аксессуаров
 function Accessories(type, model, name){
@@ -36,9 +40,20 @@ function Accessories(type, model, name){
     this.name = name  
 }
 
+// Функция конструктор для телефонов
+function Phone(type, model, name, year){
+    this.type = type,
+    this.model = model,
+    this.name = name, 
+    this.year = year 
+}
 
 //Делегирующая связь
 Accessories.prototype = new Device();
+Phone.prototype = new Device();
+Computer.prototype = new Device();
+
+
 
 Device.prototype.getName = function(){
     console.log(`The name of this ${this.type} is ${this.name}`)
@@ -61,9 +76,10 @@ Device.prototype.turnOff = function(){
 }
 
 // Создание устройств
-const macBook = new Device('laptop', 'MacBook', 'Pro', 2015);
-const iphone = new Device('phone', 'IPhone', 'XR', 2018);
+const macBook = new Computer('laptop', 'MacBook', 'Pro', 2015);
+const iphone = new Phone('phone', 'IPhone', 'XR', 2018);
 const airPods = new Accessories('Accessor', '2nd generation', 'Airpods');
+
 
 // Добавление собственных свойств
 macBook.memory = 128;
@@ -91,7 +107,7 @@ airPods.putTheDeviceOnCharging()
 // Проверка собственных методов
 airPods.getName()
 airPods.turnOff()
-iphone.callThePolice();
+iphone.getName()
 
 console.log(macBook);
 console.log(iphone);
