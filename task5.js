@@ -1,11 +1,3 @@
-
-//Родительская функция
-// Функция конструктор для устройств
-/* function Device(year){
-    this.company = 'apple',
-    this.year = year
-} */
-
 class Device {
     constructor(year){
         this.company = 'apple',
@@ -35,33 +27,30 @@ class Device {
 
 //Делегирующая связь
 
-// Функция конструктор для компьютеров
 class Computer extends Device {
     constructor (type, name, model, year) {
+        super(year);
         this.type = type,
         this.name = name,
-        this.model = model,
-        this.year = year
+        this.model = model
     }
 }
 
-// Функция конструктор для телефонов
 class Phone extends Device {
     constructor(type, model, name, year){
+        super(year);
         this.type = type,
         this.model = model,
-        this.name = name, 
-        this.year = year 
+        this.name = name
     }
 }
 
-// Функция конструктор для аксессуаров
 class Accessories extends Device {
     constructor(type, model, name, year){
+        super(year);
         this.type = type,
-        this.model = model
-        this.name = name,
-        this.year = year  
+        this.model = model,
+        this.name = name
     }
 }
 
@@ -86,17 +75,20 @@ iphone.callThePolice = function(){
 
 airPods.createThePair = function(){
     console.log(`Your ${this.name} are created the pair with your ${iphone.name}`)
-}
+};
 
-// Проверка собственных методов
-/* macBook.putTheDeviceOnCharging()
-airPods.putTheDeviceOnCharging()
-airPods.getName()
-airPods.turnOff()
-iphone.getName() */
+// Проверка методов
+macBook.putTheDeviceOnCharging();
+airPods.putTheDeviceOnCharging();
+airPods.getName();
+airPods.turnOff();
+iphone.getName();
+iphone.putTheDeviceOnCharging();
+
+console.log(macBook);
+console.log(iphone);
+console.log(airPods);
 
 
 
 
-
-iphone.putTheDeviceOnCharging()
